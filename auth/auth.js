@@ -26,9 +26,18 @@
       const pass = txtPassword.value;
       const auth = firebase.auth();
 
-      const promise = auth.signInWithEmailAndPassword(email, pass);
-
+      const promise = auth.signInWithEmailAndPassword(email, pass)
+      //window.location = '../learning/index.html';
       promise.catch(e => console.log(e.message));
+
+      var user = firebase.auth().currentUser;
+
+      if (user) {
+        // User is signed in.
+        window.location = '../learning/index.html';
+      } else {
+        // No user is signed in.
+      }
 
     });
 
@@ -39,9 +48,27 @@
       const pass = txtPassword.value;
       const auth = firebase.auth();
 
-      const promise = auth.createUserWithEmailAndPassword(email, pass);
 
-      promise.catch(e => console.log(e.message));
+      firebase.auth().createUserWithEmailAndPassword(email, pass)
+      .then(function(user){
+        console.log('uid',user.uid);
+        //$userID = user.uid;
+        //console.log(userID);
+        firebase.database().ref('users').child(user.uid).set({
+
+            birthdate: "1993-06-22",
+            email: email,
+            firstname: "Jone",
+            lastname: "Doe"
+          
+        });
+
+        //window.location = '../learning/index.html';
+        //Here if you want you can sign in the user
+      })
+      .catch(function(error) {
+          console.log(error);
+      });
 
     });
 
@@ -49,17 +76,17 @@
       firebase.auth().signOut();
     });
 
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-      if(firebaseUser){
-        console.log(firebaseUser);
-        window.location = '../learning/index.html';
-      }
-      else
-      {
-        console.log("not logged in");
-      }
+    // firebase.auth().onAuthStateChanged(firebaseUser => {
+    //   if(firebaseUser){
+    //     console.log(firebaseUser);
+    //     //window.location = '../learning/index.html';
+    //   }
+    //   else
+    //   {
+    //     console.log("not logged in");
+    //   }
 
-    });
+    // });
 
 }());  
 
