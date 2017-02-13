@@ -26,18 +26,32 @@
       const pass = txtPassword.value;
       const auth = firebase.auth();
 
-      const promise = auth.signInWithEmailAndPassword(email, pass)
-      //window.location = '../learning/index.html';
-      promise.catch(e => console.log(e.message));
+      auth.signInWithEmailAndPassword(email, pass)
+      .then(function(firebaseUser){
+        if(firebaseUser)
+        {
+          window.location = '../main/main.html';
+        } 
+      })
+      .catch(function(error) 
+      {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode === 'auth/wrong-password') 
+        {
+          alert('Wrong password.');
+        } 
+        else if(errorCode === 'auth/user-not-found') 
+        {
+          alert('Wrong user.');
+        }
+        else
+        {
+          console.log(error);
+        }
 
-      var user = firebase.auth().currentUser;
-
-      if (user) {
-        // User is signed in.
-        window.location = '../learning/index.html';
-      } else {
-        // No user is signed in.
-      }
+      });
 
     });
 
@@ -51,9 +65,9 @@
 
       firebase.auth().createUserWithEmailAndPassword(email, pass)
       .then(function(user){
+        //print uid
         console.log('uid',user.uid);
-        //$userID = user.uid;
-        //console.log(userID);
+        //create a object using uid
         firebase.database().ref('users').child(user.uid).set({
 
             birthdate: "1993-06-22",
@@ -63,8 +77,6 @@
           
         });
 
-        //window.location = '../learning/index.html';
-        //Here if you want you can sign in the user
       })
       .catch(function(error) {
           console.log(error);
@@ -76,17 +88,17 @@
       firebase.auth().signOut();
     });
 
-    // firebase.auth().onAuthStateChanged(firebaseUser => {
-    //   if(firebaseUser){
-    //     console.log(firebaseUser);
-    //     //window.location = '../learning/index.html';
-    //   }
-    //   else
-    //   {
-    //     console.log("not logged in");
-    //   }
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      if(firebaseUser){
+        console.log(firebaseUser);
+        //window.location = '../learning/index.html';
+      }
+      else
+      {
+        console.log("not logged in");
+      }
 
-    // });
+    });
 
 }());  
 
