@@ -30,7 +30,7 @@
       .then(function(firebaseUser){
         if(firebaseUser)
         {
-          window.location = '../main/main.html';
+          window.location = '../repositories/repo.html';
         } 
       })
       .catch(function(error) 
@@ -61,20 +61,26 @@
       const email = txtEmail.value;
       const pass = txtPassword.value;
       const auth = firebase.auth();
+      var today = new Date();
 
+      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
       firebase.auth().createUserWithEmailAndPassword(email, pass)
       .then(function(user){
         //print uid
         console.log('uid',user.uid);
         //create a object using uid
-        firebase.database().ref('users').child(user.uid).set({
-
-            birthdate: "1993-06-22",
+        firebase.database().ref().child('users').child(user.uid).set({
+            //birthdate: "1993-06-22",
+            username:"abcd",
             email: email,
-            firstname: "Jone",
-            lastname: "Doe"
-          
+            date_joind: date,
+            location: "1234 College Ave, Columbia, Mo, 65201",
+            first_name: "Jone",
+            last_name: "Doe",
+            friends: "null",
+            profile_picture_main: "https://s-media-cache-ak0.pinimg.com/564x/79/bf/d8/79bfd8b1793e4f5c910429b0555522ec.jpg",
+            profile_picture_thumb: "https://s-media-cache-ak0.pinimg.com/564x/79/bf/d8/79bfd8b1793e4f5c910429b0555522ec.jpg"
         });
 
       })
@@ -84,9 +90,9 @@
 
     });
 
-    btnLogout.addEventListener('click', e => {
-      firebase.auth().signOut();
-    });
+    // btnLogout.addEventListener('click', e => {
+    //   firebase.auth().signOut();
+    // });
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if(firebaseUser){
