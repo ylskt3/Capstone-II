@@ -117,68 +117,79 @@
 
 			var file = inputFile.files[0];
 
+			var newPostRef = firebase.database().ref().child('photographs').push();
+			var photoKey = newPostRef.key;
+			console.log(photoKey);
+
 			//create a storage ref
-			var storageRef = firebase.storage().ref('images').child(firebase.auth().currentUser.uid).child(file.name);
-			//upload file
-			var task = storageRef.put(file);
+			var rand_string = generateRandomFileSafeString(6);
+			var extension = pullFileNameExtension(file.name);
+
+			if(extension != "unknown"){
+				var newFileName = photoKey + '+' + rand_string + '.' + extension;
+				console.log(newFileName);
+				var storageRef = firebase.storage().ref('images').child(firebase.auth().currentUser.uid).child(newFileName);
+				//upload file
+				var task = storageRef.put(file);
 
 
-			//update progress bar
-			task.on('state_changed', 
-				function progress(snap){
-				  var percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
-				  uploader.value = percentage;
-				},
+				//update progress bar
+				task.on('state_changed', 
+					function progress(snap){
+					  var percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+					  uploader.value = percentage;
+					},
 
-				function error(err){
+					function error(err){
+						firebase.database().ref().child('photographs').child(photoKey).remvoe();
+					},
+					//When the upload is complete, set database
+					function complete(){
 
-				},
-				//When the upload is complete, set database
-				function complete(){
+						var mainDownloadURL = task.snapshot.metadata.downloadURLs[0];
 
-					var mainDownloadURL = task.snapshot.metadata.downloadURLs[0];
+						console.log( mainDownloadURL );
 
-					console.log( mainDownloadURL );
+						// firebase.database().ref('users').child(firebase.auth().currentUser.uid).child('images').set({
+						// 	main_url: mainDownloadURL
+						// });
 
-					// firebase.database().ref('users').child(firebase.auth().currentUser.uid).child('images').set({
-					// 	main_url: mainDownloadURL
-					// });
-
-					var newPostRef = firebase.database().ref().child('photographs').push();
-					var photoKey = newPostRef.key;
-
-					newPostRef.set({
-						date_taken: "2001-03-02",
-						date_taken_conf: "0.7",
-					    uploaderID: firebase.auth().currentUser.uid,
-					    date_posted: date,
-					    main_url: mainDownloadURL,
-					    thumbnail_url: mainDownloadURL,
-					    description: descriptionTxt,
-					    title: "wow",
-					    uid: photoKey
-					});
-
-					var currRepoRef = firebase.database().ref().child('repositories').child(currentRepo);
-					var repoKey = currRepoRef.key;
-
-					currRepoRef.child('photos').child(photoKey).set("true");
-					
-					//TODO: create thumbnail
-
-					var thumbnailFileName = "thumb_" + task.snapshot.metadata.name;
-					console.log(thumbnailFileName);
-
-					
-					setTimeout(function(){
-					    //create thumbnail image ref
-						firebase.storage().ref().child('images').child(firebase.auth().currentUser.uid).child(thumbnailFileName).getDownloadURL().then(function(thumbnailUrl) {
-							console.log(thumbnailUrl);
+						newPostRef.set({
+							date_taken: "2001-03-02",
+							date_taken_conf: "0.7",
+						    uploaderID: firebase.auth().currentUser.uid,
+						    date_posted: date,
+						    main_url: mainDownloadURL,
+						    thumbnailPath: "images/no-picture-yet.jpg",
+						    description: descriptionTxt,
+						    title: "wow",
+						    uid: photoKey
 						});
-					}, 10000);
 
-				}
-			);
+						var currRepoRef = firebase.database().ref().child('repositories').child(currentRepo);
+						var repoKey = currRepoRef.key;
+
+						currRepoRef.child('photos').child(photoKey).set("true");
+						
+						//TODO: create thumbnail
+
+						// var thumbnailFileName = "thumb+" + task.snapshot.metadata.name;
+						// console.log(thumbnailFileName);
+
+						
+						// setTimeout(function(){
+						//     //create thumbnail image ref
+						// 	firebase.storage().ref().child('images').child(firebase.auth().currentUser.uid).child(thumbnailFileName).getDownloadURL().then(function(thumbnailUrl) {
+						// 		console.log(thumbnailUrl);
+						// 	});
+						// }, 10000);
+
+					}
+				);
+			}
+
+			
+			
 		});
 
 
@@ -199,14 +210,19 @@
 				// var imgTd = document.createElement('td');
 				// var infoTd = document.createElement('td');
 
-				if(snap.key == 'main_url')
+				if(snap.key == 'thumbnailPath')
 				{
+
 					//console.log(snap.val());
 					const img = document.createElement('img');
 					
 
 					img.id = repoSnap.key;
-					img.src = snap.val();
+					console.log(snap.val());
+					firebase.storage().ref().child(snap.val()).getDownloadURL().then(function(thumbnailUrl) {
+						console.log(thumbnailUrl);
+						img.src = thumbnailUrl;
+					});
 					img.style = "width:304px;height:228px;"
 
 
@@ -279,8 +295,28 @@
 
 }());  
 
+function generateRandomFileSafeString(str_length) {
+	
+	var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    
-    
+    for( var i=0; i < str_length; i++ ){
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
 
+    return text;
+}
     
+function pullFileNameExtension( file_name ) {
+
+	var default_value = "unknown";
+
+	var split_strings = file_name.split(".");
+
+	if (split_strings.length != 2){
+		//	There was some error
+		return default_value;
+	}
+
+	return split_strings[1];
+}
