@@ -112,9 +112,6 @@
 
 	      	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
-      		//get file
-			//var file = e.target.files[0];
-
 			var file = inputFile.files[0];
 
 			var newPostRef = firebase.database().ref().child('photographs').push();
@@ -150,9 +147,6 @@
 
 						console.log( mainDownloadURL );
 
-						// firebase.database().ref('users').child(firebase.auth().currentUser.uid).child('images').set({
-						// 	main_url: mainDownloadURL
-						// });
 
 						newPostRef.set({
 							date_taken: "2001-03-02",
@@ -202,18 +196,12 @@
 	    // });  
 
 	    dbRefRepo.on('child_added', repoSnap => {
-	    	//var tbl = document.createElement('table');
 
 			dbRefPhoto.child(repoSnap.key).on('child_added', snap => {
-				//console.log(snap.key);
-				// var tr = document.createElement('tr');
-				// var imgTd = document.createElement('td');
-				// var infoTd = document.createElement('td');
 
-				if(snap.key == 'thumbnailPath')
-				{
+				//put the thumbnail.
+				if(snap.key == 'thumbnailPath'){
 
-					//console.log(snap.val());
 					const img = document.createElement('img');
 					
 
@@ -228,23 +216,17 @@
 
 					imageList.appendChild(img);
 
-					
-            		//imgTd.appendChild(img);
-            		//td.appendChild(ulList);
-            		//tr.appendChild(imgTd);
 				}
-				// if(snap.key == 'date_posted')
-				// {
-				// 	const ulList = document.createElement('list');
+			});
 
-				// 	ulList.innerText = snap.val();
+			//check the thumnail created by cloud function, if database is updated, update the image that user just uploaded.
+			dbRefPhoto.child(repoSnap.key).on('child_changed', snap => {
 
-				// 	infoTd.appendChild(ulList);
-				// 	tr.appendChild(infoTd);
-				// }
+				firebase.storage().ref().child(snap.val()).getDownloadURL().then(function(thumbnailUrl) {
+					document.getElementById(repoSnap.key).src = thumbnailUrl;
+				});
+				
 
-				// tbl.appendChild(tr);
-				// imageList.appendChild(tbl);
 			});
 	    });
 
@@ -258,30 +240,8 @@
 	    	dbRefRepo.child(snap.key).remove();
 	    	console.log(repoKeySnap.key);
 	    	repoKeyRef.child(repoKeySnap.key).remove();
-	    	
-	    	//repoKeyRef.child(repoKeySnap.val()).remove();
 	    });	
 
-		// repoKeyRef.on('child_removed', snap => {
-
-		// 	console.log(snap.key);
-	 //    	const liToRemove = document.getElementById(snap.key);
-	 //    	if(liToRemove != null)
-	 //    	{
-	 //    		console.log(liToRemove);
-		//     	imageList.removeChild(liToRemove);
-		//     	//remove the photoUid from repositories
-		//     	dbRefRepo.child(snap.key).remove();
-
-	 //    		repoKeyRef.child(snap.key).remove();
-	 //    	}
-
-		// });
-
-
-
-
-	    
 	  }
       else
       {
