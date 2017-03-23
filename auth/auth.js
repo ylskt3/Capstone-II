@@ -69,20 +69,18 @@
       .then(function(user){
         //print uid
         console.log('uid',user.uid);
+        
         //create a object using uid
         firebase.database().ref().child('users').child(user.uid).set({
-            //birthdate: "1993-06-22",
             username:"abcd",
             email: email,
-            date_joind: date,
+            date_joined: date,
             location: "1234 College Ave, Columbia, Mo, 65201",
             first_name: "Jone",
             last_name: "Doe",
-            friends: "null",
-            profile_picture_main: "https://s-media-cache-ak0.pinimg.com/564x/79/bf/d8/79bfd8b1793e4f5c910429b0555522ec.jpg",
-            profile_picture_thumb: "https://s-media-cache-ak0.pinimg.com/564x/79/bf/d8/79bfd8b1793e4f5c910429b0555522ec.jpg"
-        });
-
+            profile_picture_main: "http://sd.keepcalm-o-matic.co.uk/i/no-profile-picture-just-enjoy-looking-at-my-name-1.png",
+            profile_picture_thumb: "http://sd.keepcalm-o-matic.co.uk/i/no-profile-picture-just-enjoy-looking-at-my-name-1.png"
+          });
       })
       .catch(function(error) {
           console.log(error);

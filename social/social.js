@@ -53,7 +53,20 @@
             document.getElementById('info').appendChild(btnAddFridend).id = 'btnAddFridend';
         
             btnAddFridend.addEventListener('click', e => {
-              alert("friend added");
+              
+              var currUserFriendsRef = firebase.database().ref().child('users').child(firebase.auth().currentUser.uid).child('friends');
+
+              currUserFriendsRef.once('value', function(snapshot) {
+                if (snapshot.hasChild(searchedUid)) {
+                  alert('This user is already in your friend list');
+                }
+                else{
+                  currUserFriendsRef.child(searchedUid).set('true');
+                  firebase.database().ref().child('users').child(searchedUid).child('friends').child(firebase.auth().currentUser.uid).set('true');
+                  alert("friend added");
+                }
+              });
+              
             });
           }
           else
