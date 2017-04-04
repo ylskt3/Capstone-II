@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
 	              , "assets/img/backgrounds/6.jpeg"
 	             ], {duration: 3000, fade: 750});
      */
-     $.backstretch("../assets/img/backgrounds/CollageThing_light.jpg");
+     $.backstretch("assets/img/backgrounds/clean_textile_@2X.png");
      /*
         Wow
     */

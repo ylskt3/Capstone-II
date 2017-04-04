@@ -30,7 +30,8 @@
       .then(function(firebaseUser){
         if(firebaseUser)
         {
-          window.location = '../repositories/repo.html';
+          window.location = "../homeFeed.html";
+          //'../repositories/repo.html';
         } 
       })
       .catch(function(error) 
