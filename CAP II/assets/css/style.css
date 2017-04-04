@@ -25,26 +25,34 @@ h1, h2 {
 }
 
 
-#upleft { width:70%; height: 700px;  float:left; }
-#upleft1 { width:70%; height: 700px;  float:left; display: none;}
-#upright { width:30%; height:700px;  float:left }
+#upleft { position:relative; width:70%; height: 700px;  float:left; }
+#upright { position:relative; width:30%; height:700px;  float:left }
 
 #repo_one{
+	position:relative;
 	height:30%;
 	width:30%;
 	margin: 100px 100px 100px 100px;
 	background-color: silver;
 	float:left;
 }
-#repo_oneone{
+#repo_one_blank{
+	position:relative;
 	height:30%;
 	width:30%;
 	margin: 100px 100px 100px 100px;
-	background-color: silver;
+	background-color: white;
 	float:left;
+}
+.footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:6px;
 }
 
 #swapPage{
+	position:relative;
 	margin:50px 50px 50px 50px;
 }
 
