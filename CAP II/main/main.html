@@ -165,50 +165,54 @@
           const dbRefRepo = firebase.database().ref();
           var repo_id;
             dbRefRepo.on('value', snap => {
-                        repo_id = snap.child('users').child('t0b0MJbprQdOBoXU9BiV0zmYymA2').child('repositories').val();
-                        console.log(repo_id);
+                        // repo_id = snap.child('users').child('t0b0MJbprQdOBoXU9BiV0zmYymA2').child('repositories').val();
+                        //console.log(repo_id);
+                        var target_repo_id = sessionStorage.getItem("sent");
+                        console.log(target_repo_id);
+                        //var x = <?php echo $_POST["comentonpost"] ?>
+                        //console.log(uid);
                         var photo_array = new Array();
                         var match =false;
                         var photo_id;
                         var photo_info = new Array();
-                        target_repo_id = "-Ke-fv2rM_Xklj9CJr1t";
-                        console.log(Object.keys(repo_id).length);
-                        for( var i = 0; i < Object.keys(repo_id).length ; i++ ){
-                            var checking_id = Object.keys(repo_id)[i];
-                            if(checking_id == target_repo_id){
-                                match = true;
-                                break;
-                            }
+                        var repo_info = snap.child('repositories').child(target_repo_id).val();
+                        //target_repo_id = "-Ke-fv2rM_Xklj9CJr1t";
+                        //console.log(Object.keys(repo_id).length);
+                        // for( var i = 0; i < Object.keys(repo_id).length ; i++ ){
+                        //     var checking_id = Object.keys(repo_id)[i];
+                        //     if(checking_id == target_repo_id){
+                        //         match = true;
+                        //         break;
+                        //     }
+                        // }
+                        //console.log(match);
+                        photo_id = snap.child('repositories').child(target_repo_id).child('photos').val();
+                        for(var i = 0; i < Object.keys(photo_id).length ; i++ ){
+                            photo_array.push(Object.keys(photo_id)[i]);
                         }
-                        console.log(match);
-                        if(match == true){
-                            photo_id = snap.child('repositories').child(target_repo_id).child('photos').val();
-                            for(var i = 0; i < Object.keys(photo_id).length ; i++ ){
-                                photo_array.push(Object.keys(photo_id)[i]);
-                            }
-                        }
+                        
                         for(var i = 0; i < photo_array.length; i++ ){
                             photo_info.push(snap.child('photographs').child(photo_array[i]).val());
                             
                         }
                         console.log(photo_info);
                 //var whole_json = snap.val();
-                var time = photo_info[0].date_taken;
-                time =time.split('-');
-                console.log(time);
+                // var time = photo_info[0].date_taken;
+                // console.log(time);
+                // time =time.split('-');
+                // console.log(time);
 
-                //var json_string = '{"title": {"media": {"url": "//www.flickr.com/photos/tm_10001/2310475988/","caption": "'+photo_info[0].title+'","text": {"headline": "Whitney Houston<br/> 1963 - 2012","text": "<p>Houstons voice caught the imagination of the world propelling her to superstardom at an early age becoming one of the most awarded performers of our time. This is a look into the amazing heights she achieved and her personal struggles with substance abuse and a tumultuous marriage.</p>"}}},"events": [{"media": {"url": "{{ static_url }}/img/examples/houston/family.jpg","caption": "Houstons mother and Gospel singer, Cissy Houston (left) and cousin Dionne Warwick."},"start_date": {"month": "8","day": "9","year": "1963"},"text": {"headline": "A Musical Heritage","text": "<p>Born in New Jersey on August 9th, 1963, Houston grew up surrounded by the music business. Her mother is gospel singer Cissy Houston and her cousins are Dee Dee and Dionne Warwick.</p>"}}]}';
 
                 var json_string = {
                                     "title": {
                                         "media": {
-                                          "url": "//www.flickr.com/photos/tm_10001/2310475988/",
+                                          "url": repo_info.thumbnailUrl,
                                           "caption": "Whitney Houston performing on her My Love is Your Love Tour in Hamburg.",
                                           "credit": "flickr/<a href='http://www.flickr.com/photos/tm_10001/'>tm_10001</a>"
                                         },
                                         "text": {
-                                          "headline": "Whitney Houston<br/> 1963 - 2012",
-                                          "text": "<p>Houston's voice caught the imagination of the world propelling her to superstardom at an early age becoming one of the most awarded performers of our time. This is a look into the amazing heights she achieved and her personal struggles with substance abuse and a tumultuous marriage.</p>"
+                                          "headline": repo_info.title,
+                                          "text": repo_info.longDescription,
                                         }
                                     },
                                     "events": [
@@ -216,6 +220,7 @@
                                     ]
                                 }
                 for(var i = 0 ; i < photo_array.length; i ++){
+                    if(photo_info[i] != null){
                     var time = photo_info[i].date_taken;
                     time =time.split('-');
                     console.log(time);
@@ -238,7 +243,7 @@
                     var event_length = Object.keys(json_string['events']).length;
                     json_string['events'][event_length] = new_event;  
                 }
-                
+                }
 
                 console.log(json_string);
                 console.log(json_string['events']);
