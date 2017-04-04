@@ -38,6 +38,7 @@
             //document.getElementById('result').value = tmp;
 
             var profileImg = document.createElement('img');
+            profileImg.style="width:304px;";
             profileImg.src = snap.child(searchedUid).child('profile_picture_main').val();
             console.log(profileImg.src);
             //profileImg.style = "width:300px;height:228px;"
@@ -53,7 +54,26 @@
             document.getElementById('info').appendChild(btnAddFridend).id = 'btnAddFridend';
         
             btnAddFridend.addEventListener('click', e => {
-              alert("friend added");
+              
+              var currUserFriendsRef = firebase.database().ref().child('users').child(firebase.auth().currentUser.uid).child('friends');
+
+              currUserFriendsRef.once('value', function(snapshot) {
+                if (snapshot.hasChild(searchedUid)) {
+                  alert('This user is already in your friend list');
+                  location.reload();
+                }
+                else if(searchedUid == firebase.auth().currentUser.uid){
+                	alert('Cannot add yourself');
+                	location.reload();
+                }
+                else{
+                  currUserFriendsRef.child(searchedUid).set('true');
+                  firebase.database().ref().child('users').child(searchedUid).child('friends').child(firebase.auth().currentUser.uid).set('true');
+                  alert("friend added");
+                  location.reload();
+                }
+              });
+              
             });
           }
           else

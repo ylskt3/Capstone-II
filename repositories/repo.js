@@ -18,11 +18,26 @@
       	var userRepoKeyRef = dbRefObject.child(firebase.auth().currentUser.uid).child('repositories');
 
         console.log(firebaseUser);
-        var btn = document.createElement("BUTTON");
-        btn.innerText = "logout";
-        document.body.appendChild(btn).id = 'btnLogout';
+        var btnLogout = document.createElement("BUTTON");
+        btnLogout.innerText = "logout";
+        document.body.appendChild(btnLogout).id = 'btnLogout';
 
-        const btnLogout = document.getElementById('btnLogout');
+        var btnSearch = document.createElement("BUTTON");
+        btnSearch.innerText = "Search Users";
+        document.body.appendChild(btnSearch).id = 'btnSearch';
+
+        var btnAddRepo = document.createElement("BUTTON");
+        btnAddRepo.innerText = "Create Repo";
+        document.body.appendChild(btnAddRepo).id = 'btnAddRepo';
+
+        var btnBrowseRepo = document.createElement("BUTTON");
+        btnBrowseRepo.innerText = "Browse Repo";
+        document.body.appendChild(btnBrowseRepo).id = 'btnBrowseRepo';
+
+        const logout = document.getElementById('btnLogout');
+        const search = document.getElementById('btnSearch');
+        const addRepo = document.getElementById('btnAddRepo');
+        const browseRepo = document.getElementById('btnBrowseRepo');
 
 	    //	Check to see if there is a user
 	    if (firebase.auth().currentUser == null) {
@@ -32,10 +47,23 @@
 	    	console.log("There is a user!");
 	    }
 
-        btnLogout.addEventListener('click', e => {
+        logout.addEventListener('click', e => {
         	firebase.auth().signOut();
         	window.location = '../auth/auth.html';
         });
+
+        search.addEventListener('click', e => {
+        	window.location = '../social/social.html';
+        });
+
+        addRepo.addEventListener('click', e => {
+        	window.location = 'addRepo/addRepo.html';
+        });
+
+        browseRepo.addEventListener('click', e => {
+        	window.location = 'addRepoFromFriends/friendsRepo.html';
+        });
+
 
         userRepoKeyRef.on('child_added', userRepoKeySnap => {
 
