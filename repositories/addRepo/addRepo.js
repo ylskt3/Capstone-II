@@ -30,14 +30,21 @@
           var repoKey = repoRef.key;
           var userRef = firebase.database().ref().child('users').child(firebase.auth().currentUser.uid).child('repositories').child(repoKey).set('true');
 
+          //get current date
+          var today = new Date();
+
+          var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
           repoRef.set({
+              creation_date: date,
+              creator_id: firebase.auth().currentUser.uid,
               end_date: getEnd_date,
               longDescription: getLong_des,
               shortDescription: getShort_des,
               start_date: getStart_date,
               thumbnailUrl: "https://firebasestorage.googleapis.com/v0/b/photoarchivingtest.appspot.com/o/images%2Fthumbnail%2F501631256.557267_tn.jpg?alt=media&token=58b36368-2afe-4e51-9614-4ca69f371099",
               title: getTitle,
-              uid: firebase.auth().currentUser.uid
+              uid: repoKey
           });
         });
       }

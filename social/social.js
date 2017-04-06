@@ -19,6 +19,14 @@
       var userRef = firebase.database().ref('users');
       var btnSearch = document.getElementById('btnSearch');
 
+      var currentUserImg;
+
+      userRef.child(firebase.auth().currentUser.uid).child('profile_picture_main').once('value', function(snap){
+        currentUserImg = snap.val();
+        console.log(currentUserImg);
+      });
+
+
       btnSearch.addEventListener('click', e => {
 
         var reqestEmail = document.getElementById('fEmail').value;
@@ -31,7 +39,7 @@
             console.log(foundUser);
             var searchedUid = Object.keys(foundUser)[0];
             console.log(searchedUid);
-            var tmp = JSON.stringify(foundUser, null, "\t"); 
+            // var tmp = JSON.stringify(foundUser, null, "\t"); 
             var lastName = snap.child(searchedUid).child('last_name').val();
             var firstName = snap.child(searchedUid).child('first_name').val();
             //console.log(lastName);
@@ -69,6 +77,21 @@
                 else{
                   currUserFriendsRef.child(searchedUid).set('true');
                   firebase.database().ref().child('users').child(searchedUid).child('friends').child(firebase.auth().currentUser.uid).set('true');
+                  var notiRef = firebase.database().ref().child('notifications').child(searchedUid).push();
+                  var notiKey = notiRef.key;
+
+                  //get current time
+                  var today = new Date();
+
+                  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+' '+today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+                  notiRef.set({
+                    whoAddedYou: firebase.auth().currentUser.uid,
+                    notification: "has added you as friend",
+                    notification_time: date,
+                    notification_id: notiKey
+                  });
+
                   alert("friend added");
                   location.reload();
                 }
