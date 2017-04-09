@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test</title>
+  <style media="screen">
+  	body{
+  		display: flex;
+  		min-height: 100vh;
+  		width: 100%;
+  		padding: 0;
+  		margin: 0;
+  		align-items: center;
+  		justify-content: center;
+  		flex-direction: column;
+  	}
+
+  	#uploader{
+  		-webkit-appearance: none;
+  		appearance: none;
+  		width: 50%;
+  		margin-bottom: 10px;
+  	}
+  </style>
+  <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+  <script src="../assets/js/jquery-1.12.3.min.js"></script>
+  <script type="text/javascript" src="../assets/js/moment.js"></script>
+</head>
+<body>
+
+	<progress value="0" max="100" id="uploader">0%</progress>
+ 
+  
+
+  <p>Select an audio file</p>
+  <input type="file" accept="audio/*" value="upload" id = "file">
+
+  <audio id="audio"></audio>
+
+  <p>
+    <label>File Name:</label>
+    <span id="filename"></span>
+  </p>
+
+  <p>
+    <label>File Type:</label>
+    <span id="filetype"></span>
+  </p>
+
+  <p>
+    <label>File Size:</label>
+    <span id="filesize"></span>
+  </p>
+
+  <p>
+    <label>Song Duration:</label>
+    <span id="duration"></span>
+  </p>
+
+
+  <p>description</p>
+  <input type="textArea" id="description">
+  <p>title</p>
+  <input type="input" id="title">
+
+  <p></p>
+  <input type="button" id = "submit" value = "Submit">
+
+
+  <script src = "uploadStories.js"></script>
+
+</body>
+</html>

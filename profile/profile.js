@@ -105,9 +105,9 @@
 
 	    submitBtn.addEventListener('click', function(){
 	    	
-	    	const txtFname = document.getElementById('first_name').value;
-	        const txtLname = document.getElementById('last_name').value;
-	        const txtLocation = document.getElementById('location').value;
+	    	const txtFname = toTitleCase(document.getElementById('first_name').value);
+	        const txtLname = toTitleCase(document.getElementById('last_name').value);
+	        const txtLocation = toTitleCase(document.getElementById('location').value);
 	        const txtUsername = document.getElementById('username').value;
 
 	    	//get current date
@@ -207,6 +207,9 @@
 
     });
 
-  
-
 }());  
+
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}

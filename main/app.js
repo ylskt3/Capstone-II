@@ -200,21 +200,31 @@
 			dbRefPhoto.child(repoSnap.key).on('child_added', snap => {
 
 				//put the thumbnail.
-				if(snap.key == 'thumbnailPath'){
+				if(snap.key == 'main_url'){
 
-					const img = document.createElement('img');
+					var t = document.createElement('a');
+	    		    //console.log(id);
+	    			t.setAttribute('href',"#");
+	    			t.innerHTML = '<img src=' + snap.val() + ' ' +'style = "width:304px;height:228px;"' + '>';
+	    			t.onclick = function(){
+	    				sessionStorage.setItem("sent", repoSnap.key); 
+    				 	window.open("../stories/uploadStories.html","_blank");
+	    			};
+
+					// const img = document.createElement('img');
 					
 
-					img.id = repoSnap.key;
-					console.log(snap.val());
-					firebase.storage().ref().child(snap.val()).getDownloadURL().then(function(thumbnailUrl) {
-						console.log(thumbnailUrl);
-						img.src = thumbnailUrl;
-					});
-					img.style = "width:304px;height:228px;"
+					// img.id = repoSnap.key;
+					// // console.log(snap.val());
+					// // firebase.storage().ref().child(snap.val()).getDownloadURL().then(function(thumbnailUrl) {
+					// // 	console.log(thumbnailUrl);
+					// // 	img.src = thumbnailUrl;
+					// // });
+					// img.src = snap.val();
+					// img.style = "width:304px;height:228px;";
 
 
-					imageList.appendChild(img);
+					imageList.appendChild(t);
 
 				}
 			});

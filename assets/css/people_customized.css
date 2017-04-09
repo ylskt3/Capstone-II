@@ -1,0 +1,47 @@
+.div_margin_top {
+         margin-top: 63px;
+}
+
+.navbar-customized-color {
+         background-color: #0d69af;
+}
+.hover_effect:hover, .hover_effect:focus {
+         color: #2d0202;
+         /*cannot change the following background color since it will use the color setting in Bootstrap.css*/
+         background-color: #6db3ef;
+}
+                        
+.customized_a_tag {
+          color: #FF6666;
+          text-decoration: underline;
+}
+.customized_a_tag:hover {
+          color: #9570e2;
+}
+                 
+.ui.items > .item.show_container{
+          background: #f7f5f5;
+          border: 1px solid #999999;
+          border-radius: 1rem;
+          padding: 10px 10px 10px 10px;
+          margin-bottom: 30px;
+}
+            
+.plus_button_position {
+          padding-top: 6px;
+          color: #999999;
+          font-style: italic;
+}
+            
+#column1{
+          width:70%;
+}
+            
+#column2 {
+          width: 30%;
+}
+            
+.scrollable {
+          overflow: scroll;
+             
+}
