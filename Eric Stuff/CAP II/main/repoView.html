@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Main page</title>
+     
+        <!-- CSS -->
+        
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">     
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../assets/css/form-elements.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/animate.css">
+
+        <!-- Javascript -->
+        <script src="../assets/js/jquery-1.12.3.min.js"></script>
+        <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.backstretch.min.js"></script>
+        <script src="../assets/js/scripts.js"></script>
+        <script src="../assets/js/wow.min.js"></script>
+        <script src="require.js"></script>
+        <!--[if lt IE 10]>
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+        
+        <!-- customized timeline viewer CSS-->
+        <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+        <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/fonts/font.clicker-garamond.css">
+
+        <!-- customized timeline viewer Javascript -->
+        <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+        
+
+        <style>
+        
+            .div_margin_top {
+                margin-top: 63px;
+            }
+            p {
+                color: linen;
+            }
+            .timeline_size {
+                width: 100%;
+                height: 600px;
+            }
+            hr {
+                border-top: 2px dashed #eee;
+            }
+            .navbar-customized-color {
+                background-color: white;
+            }
+            .hover_effect:hover {
+                color: #2d0202;
+                background-color: #eee;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <!-- menu bar -->
+             <nav class="navbar navbar-fixed-top navbar-customized-color">
+              <div class="container">
+                
+                    <div id="navbar" class="navbar-collapse collapse">
+                      <ul class="nav navbar-nav">
+                        <li><a class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="Home">Home</a></li>
+                        <li><a class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="Repository">Repository</a></li>
+                        <li><a class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="People" >People</a></li>
+
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+
+                        <li><a class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="Search"><i class="fa fa-search fa-1x" aria-hidden="true"></i></a></li>
+                        <li><a class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="User"><i class="fa fa-user-circle-o fa-1x" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+     
+        <div class="div_margin_top">
+        
+        <p><strong>Design for repository here! still trying to find out a way for showing repository with the good UI design including certain funcationalites</strong></p>
+        </div>
+
+        
+        
+
+        
+        <p>customized timeline view</p>
+        
+
+<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD6ZC7v1hVtN1_gNo5M-MbUoXGv6sZXrJE",
+    authDomain: "capstone2017-4504b.firebaseapp.com",
+    databaseURL: "https://capstone2017-4504b.firebaseio.com",
+    storageBucket: "capstone2017-4504b.appspot.com",
+    messagingSenderId: "739463464766"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      
+      if(firebaseUser){
+    const dbRefRepo = firebase.database().ref();
+    dbRefRepo.on('value', snap => {
+       var repo_id_obj = snap.child('users').child(firebase.auth().currentUser.uid).child('repositories').val();
+       var photo_array = new Array();
+       var repo_id = new Array();
+        for( var i = 0; i < Object.keys(repo_id_obj).length ; i++ ){
+            repo_id.push(Object.keys(repo_id_obj)[i]);
+        }
+       console.log(repo_id);
+       total_repo_num = repo_id.length;
+       var page_num = Math.ceil(total_repo_num / 4);
+       console.log(page_num);
+       //for(repo in repo_id){
+        //console.log(repo);
+        var upleft_tag = "<div id='upleft' class = 'page1'></div>";
+        //var hidden_tag = "<div id='upleft' display: 'none'></div>"
+        if(page_num > 1){
+               $("body").append(upleft_tag);
+               for(var i = 0; i < page_num - 1; i++){
+                var current_page = i +2
+                var hidden_tag = "<div id='upleft' class = 'page"+current_page+"' style='display: none'></div>"
+                    $("body").append(hidden_tag);
+               }
+        }
+        else{
+            $("body").append(upleft_tag);
+        }
+        
+        
+        if(page_num > 1){
+            //First page creation
+            var repo_total_num = repo_id.length;
+            for(var j = 0; j < 4; j++){
+                var div_tag = "<div id='repo_one' class = '"+repo_id[j]+"'></div>";
+                console.log(div_tag);
+                $( "#upleft" ).append(div_tag);
+
+                var photo_id = snap.child('repositories').child(repo_id[j]).child('photos').val();
+                console.log(photo_id);
+                    for(var i = 0 ; i < 4; i++){
+                        // photo_array.push(Object.keys(photo_id)[i]);
+                        var temp = Object.keys(photo_id)[i];
+                        //console.log(temp);
+                        var image_url = snap.child('photographs').child(temp).child('main_url').val();
+                        //console.log(Object.keys(photo_id)[i]);
+                        //console.log(image_url);
+                        var image_tag_creation = "<image id="+repo_id[i]+" src="+image_url+"></image>";
+                        //console.log(image_tag_creation);
+                        $('.'+repo_id[j]).append(image_tag_creation);
+                    }
+            }
+
+            repo_id.splice(0,4);
+            //middle page creation
+            for(var i = 0 ; i < page_num -2 ; i ++){
+                var cur_page = i + 2;
+                var j = 0;
+                while(j < 4){
+                    var div_tag = "<div id='repo_one' class = '"+repo_id[j]+"'></div>";
+                    console.log(div_tag);
+                    $( "#upleft[class='page"+cur_page+"']" ).append(div_tag);
+
+                    var photo_id = snap.child('repositories').child(repo_id[j]).child('photos').val();
+                    console.log(photo_id);
+                        for(var i = 0 ; i < 4; i++){
+                            // photo_array.push(Object.keys(photo_id)[i]);
+                            var temp = Object.keys(photo_id)[i];
+                            console.log(temp);
+                            var image_url = snap.child('photographs').child(temp).child('main_url').val();
+                            //console.log(Object.keys(photo_id)[i]);
+                            console.log(image_url);
+                            if(image_url){
+                                var image_tag_creation = "<image id="+repo_id[i]+" src="+image_url+"></image>";
+                            }
+                            else{
+                                var image_tag_creation = "<image id="+repo_id[i]+" src='http://www.safexone.com/images/old/default.gif'></image>";
+                            }
+                            console.log(image_tag_creation);
+                            $('.'+repo_id[j]).append(image_tag_creation);
+                        }
+                        j++;
+                        
+                }
+                repo_id.splice(0,4);
+            }
+            //last page creation
+            var last_repo_left = repo_id.length;
+            console.log(last_repo_left);
+            var k = 0;
+            cur_page = Math.ceil(repo_total_num / 4) ;
+            console.log(cur_page);
+            while(k != last_repo_left){
+                var div_tag = "<div id='repo_one' class = '"+repo_id[k]+"'></div>";
+                console.log(div_tag);
+                $( "#upleft[class='page"+cur_page+"']" ).append(div_tag); 
+                var photo_id = snap.child('repositories').child(repo_id[k]).child('photos').val();
+                    console.log(photo_id);
+                        for(var i = 0 ; i < 4; i++){
+                            // photo_array.push(Object.keys(photo_id)[i]);
+                            var temp = Object.keys(photo_id)[i];
+                            console.log(temp);
+                            var image_url = snap.child('photographs').child(temp).child('main_url').val();
+                            //console.log(Object.keys(photo_id)[i]);
+                            console.log(image_url);
+                            var image_tag_creation = "<image id="+repo_id[i]+" src="+image_url+"></image>";
+                            console.log(image_tag_creation);
+                            $('.'+repo_id[k]).append(image_tag_creation);
+                        }
+                k++;              
+
+            }
+            // var z = 0;
+            // while(z != 4 - last_repo_left){
+            //     var div_tag = "<div id='repo_one_blank'></div>";
+            //     $( "#upleft[class='page"+cur_page+"']" ).append(div_tag); 
+            //     z++;
+
+            // }
+
+
+    }
+    
+
+
+    for(i = 0; i < page_num; i ++){
+        var footer = "<div id='footer"+(i+1)+"' class = 'footer'></div>";
+         $('.page'+(i+1)).append(footer);       
+        for(j = 0; j < page_num; j ++){
+            var btn_tag = '<button type="button" id="swapPage" class = "btnPage'+(j+1)+'">'+(j+1)+'</button>';
+            console.log('.footer'+(i+1));
+            $('#footer'+(i+1)).append(btn_tag);
+        }
+        //console.log(i+1);
+        $("div").on("click",".btnPage"+(i+1),function(){
+            //alert("dsfsdfs");
+            $(this).parent().parent().parent().find("[id=upleft]").hide();
+            curpage = $(this).text();
+            $(this).parent().parent().parent().find(".page"+curpage).show();
+        });
+
+    }
+
+    //upright recomending area creation
+    var upright_tag = "<div id='upright' ></div>";
+    $("body").append(upright_tag);
+
+
+       //}
+       //console.log(photo_array);
+
+       //var image_tag = "<image src="++"></image>"
+
+    });
+}
+});
+
+
+</script>
+<script>
+    $("#swapPage").on("click", function(){
+        $(this).parent().parent().find("#upleft").hide();
+        $(this).parent().parent().find("#upleft1").show();
+
+    });
+    $("body").on("click", "#repo_one",function(){
+        //alert("asdfsadf");
+        var repo_id = $(this).attr("class");
+        alert(repo_id);
+        sessionStorage.setItem("sent", repo_id); 
+        window.location.replace("../main/main.html");
+
+    });
+
+</script>
+
+        
+        
+           
+
+
+    </body>
+
+</html>

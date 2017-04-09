@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test</title>
+  <style media="screen">
+  	body{
+  		display: flex;
+  		min-height: 100vh;
+  		width: 100%;
+  		padding: 0;
+  		margin: 0;
+  		align-items: center;
+  		justify-content: center;
+  		flex-direction: column;
+  	}
+
+  	#uploader{
+  		-webkit-appearance: none;
+  		appearance: none;
+  		width: 50%;
+  		margin-bottom: 10px;
+  	}
+  </style>
+  <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>People page</title>
+
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/form-elements.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../assets/semantic/semantic.css">
+    <link rel="stylesheet" href="../assets/css/people_customized.css">
+
+    <!-- Javascript -->
+
+    <script src="../assets/js/jquery-1.12.3.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.backstretch.min.js"></script>
+    <script src="../assets/semantic/semantic.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/scripts.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-fixed-top navbar-customized-color">
+              <div class="container">
+
+                    <div id="navbar" class="navbar-collapse collapse">
+                      <ul class="nav navbar-nav">
+                        <li><a id="home" class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="Home">Home</a></li>
+                        <li><a id="Repository" class="hover_effect" href="../repositories/repo.html" data-toggle="tooltip" data-placement="bottom" title="Repository">Repository</a></li>
+                        <li><a id="People" class="hover_effect" href="../social/social.html" data-toggle="tooltip" data-placement="bottom" title="People" >People</a></li>
+
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+
+                        <li><a id="search" class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="Search"><i class="fa fa-search fa-1x" aria-hidden="true"></i></a></li>
+                        <li><a id="user" class="hover_effect" href="../profile/profile.html" data-toggle="tooltip" data-placement="bottom" title="User"><i class="fa fa-user-circle-o fa-1x" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+
+
+	<!-- <pre id = "object"></pre> -->
+	<ul id = "list"></ul>
+
+	<div id='imageList'></div>
+
+
+
+
+  <div class="container">
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">UPLOAD</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <progress value="0" max="100" id="uploader">0%</progress>
+          	<input type="file" accept="image/*" value="upload" id = "fileButton">
+            <output id="filesInfo"></output>
+            <canvas id="canvas" width=300></canvas>
+            <p>description</p>
+            <input type="textArea" id="description">
+            <p></p>
+            <input type="button" id = "submit" value = "Submit">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <script src = "app.js"></script>
+
+</body>
+</html>

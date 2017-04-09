@@ -1,0 +1,49 @@
+.div_margin_top {
+         margin-top: 63px;
+}
+                      
+.customized_a_tag {
+          color: #FF6666;
+          text-decoration: underline;
+}
+.customized_a_tag:hover {
+          color: #9570e2;
+}
+                 
+.ui.items > .item.show_container{
+          background: #f7f5f5;
+          border: 1px solid #999999;
+          border-radius: 1rem;
+          padding: 10px 10px 10px 10px;
+          margin-bottom: 30px;
+}
+            
+.time_position {
+          padding-top: 10px;
+          color: #999999;
+          font-style: italic;
+}
+            
+#column1{
+          width:70%;
+}
+            
+#column2 {
+          width: 30%;
+}
+            
+.scrollable {
+          overflow: scroll;
+             
+}
+
+
+/* hover effect */           
+#column2 > .ui > .row > .column > .segment:hover {
+           background: #ddd;
+           box-shadow: 8px 7px 2px 0 rgba(34, 36, 38, 0.15);
+}  
+
+.close:hover {
+           color: crimson;
+}
