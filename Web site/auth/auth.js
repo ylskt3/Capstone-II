@@ -31,7 +31,6 @@
         if(firebaseUser)
         {
           window.location = "../homeFeed/homeFeed.html";
-          //'../repositories/repo.html';
         } 
       })
       .catch(function(error) 

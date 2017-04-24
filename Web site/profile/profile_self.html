@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Profile page</title>
-        
+        <title>Profile</title>
+        <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
         <!-- CSS --> 
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+        <link rel="stylesheet" href="../assets/css/w3.css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">     
         <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
-<!--		<link rel="stylesheet" href="../assets/css/form-elements.css">-->
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../assets/css/animate.css">
         <link rel="stylesheet" type="text/css" href="../assets/semantic/semantic.css">
         <link rel="stylesheet" href="../assets/css/profile_customized.css">
+        <link rel="stylesheet" href="../assets/css/nav_bar.css">
 
         <!-- Javascript -->
  
@@ -34,8 +34,6 @@
 
        <!-- Favicon and touch icons -->
         <link rel="shortcut icon" href="../assets/ico/linkedin.ico">
-        
-    </head>
 
     <body>
         <!-- menu bar -->
@@ -69,19 +67,19 @@
                             <div class="w3-third">
                               <div class="w3-white w3-text-grey w3-card-4 rounded-border">
                                 <div class="w3-display-container">
-                                  <img src="../assets/img/backgrounds/CollageThing_light.jpg" style="width:100%" alt="Avatar">
+                                  <img id="profilePic" style="width:100%" alt="Avatar">
                                 </div>
                                   
                                 <div class="w3-container">
-                                  <p class="info-position"><i class="fa fa-user-md fa-fw w3-margin-right w3-large icon-color"></i>Zhihao Zhang</p>
-                                  <p class="info-position"><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-large icon-color"></i>06-03-1994</p>
-                                  <p class="info-position"><i class="fa fa-envelope fa-fw w3-margin-right w3-large icon-color"></i>zzyrd@mail.missouri.edu</p>
-                                  <p class="info-position"><i class="fa fa-phone fa-fw w3-margin-right w3-large icon-color"></i>573-818-5526</p>
-                                  <p class="info-position"><i class="fa fa-calendar fa-fw w3-margin-right w3-large icon-color"></i>Joined: 01-01-2017</p> 
+                                  <p class="info-position" id="profileName"></p>
+                                  <p class="info-position" id="profileBirthday"></p>
+                                  <p class="info-position" id="profileEmail"></p>
+                                 <!--  <p class="info-position"><i class="fa fa-phone fa-fw w3-margin-right w3-large icon-color"></i>573-818-5526</p> -->
+                                  <p class="info-position" id="joinedDate"></p> 
                                 </div>
                                   
                                 <div class="w3-display-container">
-                                  <button class="btn btn-style rounded-border" type="submit">Edit profile</button>
+                                  <button class="btn btn-style rounded-border" type="submit" id="edit_profile">Edit profile</button>
                                 </div>
                                   
                               </div>   
@@ -97,7 +95,7 @@
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="../assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="../../assets/img/backgrounds/CollageThing_light.jpg">
                                                </a>
                                             </div>
                                               <h4 class="repo-title-position">Title</h4>
@@ -105,7 +103,7 @@
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="../assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="../../assets/img/backgrounds/CollageThing_light.jpg">
                                                </a>
                                             </div>
                                               <h4 class="repo-title-position">Title</h4>
@@ -113,7 +111,7 @@
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="../assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="../../assets/img/backgrounds/CollageThing_light.jpg">
                                                </a>
                                             </div>
                                               <h4 class="repo-title-position">Title</h4>
@@ -127,7 +125,7 @@
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="../assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="../../assets/img/backgrounds/CollageThing_light.jpg">
                                                </a>
                                             </div>
                                               <h4 class="repo-title-position">Title</h4>
@@ -135,7 +133,7 @@
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="../assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="../../assets/img/backgrounds/CollageThing_light.jpg">
                                                </a>
                                             </div>
                                               <h4 class="repo-title-position">Title</h4>
@@ -143,7 +141,7 @@
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="../assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="../../assets/img/backgrounds/CollageThing_light.jpg">
                                                </a>
                                             </div>
                                               <h4 class="repo-title-position">Title</h4>
@@ -163,5 +161,5 @@
           </div>      
         </div>
     </body>
-
+    <script src = "profile_info.js"></script>
 </html>

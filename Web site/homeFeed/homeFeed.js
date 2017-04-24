@@ -79,25 +79,6 @@
 				notiInfo.appendChild(div);
 
 		    });
-			
-
-			/*
-			<div class="item show_container">
-			  <a class="ui tiny avatar image">
-			    <img src="assets/img/backgrounds/CollageThing_light.jpg">
-			  </a>
-			  <div class="content">
-			    <a class="header">Bill Bob</a>
-			    <div class="description">
-			        <p> jointed Forsythe's <a class="customized_a_tag" href = "https://www.google.com/">family repository</a>.</p>
-			    </div>     
-			  </div>                          
-			  <div >
-			    <p class="time_position">a week ago</p>
-			  </div>     
-			</div>
-	        */
-
         });
       }
       else

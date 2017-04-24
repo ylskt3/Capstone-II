@@ -105,10 +105,34 @@
 
 	    submitBtn.addEventListener('click', function(){
 	    	
-	    	const txtFname = toTitleCase(document.getElementById('first_name').value);
-	        const txtLname = toTitleCase(document.getElementById('last_name').value);
-	        const txtLocation = toTitleCase(document.getElementById('location').value);
-	        const txtUsername = document.getElementById('username').value;
+	    	if(document.getElementById('first_name').value != ''){
+	    		console.log(document.getElementById('first_name').value);
+	    		dbRefUser.update({
+						"first_name": document.getElementById('first_name').value
+					}).then(function(){
+						alert("updated first name success")
+					});
+	    	}
+
+	    	if(document.getElementById('last_name').value != ''){
+	    		dbRefUser.update({
+						"last_name": document.getElementById('last_name').value
+					}).then(function(){
+						alert("updated last name success")
+					});
+	    	}
+
+	    	if(document.getElementById('birthdate').value != ''){
+	    		dbRefUser.update({
+						"birth_date": document.getElementById('birthdate').value
+					}).then(function(){
+						alert("updated birthdate success")
+					});
+	    	}
+	    	// const txtFname = toTitleCase(document.getElementById('first_name').value);
+	     //    const txtLname = toTitleCase(document.getElementById('last_name').value);
+	     //    const txtLocation = toTitleCase(document.getElementById('location').value);
+	     //    const txtUsername = document.getElementById('username').value;
 
 	    	//get current date
 	      	var today = new Date();
@@ -117,39 +141,38 @@
 
 			var file = inputFile.files[0];
 
-			var storageRef = firebase.storage().ref().child('profile_pics').child(firebase.auth().currentUser.uid).child(file.name);
-			//upload file
-			var task = storageRef.put(file);
+			if(file != null){
+				var storageRef = firebase.storage().ref().child('profile_pics').child(firebase.auth().currentUser.uid).child(file.name);
+				//upload file
+				var task = storageRef.put(file);
 
-			task.on('state_changed', 
-				function progress(snap){
-				},
+				task.on('state_changed', 
+					function progress(snap){
+					},
 
-				function error(err){
-					
-				},
-				//When the upload is complete, set database
-				function complete(){
-
-					var mainDownloadURL = task.snapshot.metadata.downloadURLs[0];
-
-					console.log( mainDownloadURL );
-
-
-					dbRefUser.update({
-						"username": txtUsername,
-			            "date_joined": date,
-			            "location": txtLocation,
-			            "first_name": txtFname,
-			            "last_name": txtLname,
-			            "profile_picture_main": mainDownloadURL,
-			            "profile_picture_thumb": mainDownloadURL
+					function error(err){
 						
-					});
-					
-				}
-			);
+					},
+					//When the upload is complete, set database
+					function complete(){
 
+						var mainDownloadURL = task.snapshot.metadata.downloadURLs[0];
+
+						console.log( mainDownloadURL );
+
+
+						dbRefUser.update({
+				            "date_joined": date,
+				            "profile_picture_main": mainDownloadURL,
+				            "profile_picture_thumb": mainDownloadURL
+							
+						}).then(function(){
+						alert("updated profile picture success")
+					});
+						
+					}
+				);
+			}
 			
 			
 		});

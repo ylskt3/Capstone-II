@@ -6,34 +6,35 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Profile page</title>
-        
+        <title>Profile</title>
+        <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
         <!-- CSS --> 
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+        <link rel="stylesheet" href="../assets/css/w3.css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">     
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-<!--		<link rel="stylesheet" href="assets/css/form-elements.css">-->
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" type="text/css" href="assets/semantic/semantic.css">
-        <link rel="stylesheet" href="assets/css/profile_customized.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/animate.css">
+        <link rel="stylesheet" type="text/css" href="../assets/semantic/semantic.css">
+        <link rel="stylesheet" href="../assets/css/profile_customized.css">
+        <link rel="stylesheet" href="../assets/css/nav_bar.css">
 
         <!-- Javascript -->
  
-        <script src="assets/js/jquery-1.12.3.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/semantic/semantic.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
+        <script src="../assets/js/jquery-1.12.3.min.js"></script>
+        <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.backstretch.min.js"></script>
+        <script src="../assets/semantic/semantic.js"></script>
+        <script src="../assets/js/wow.min.js"></script>
+        <script src="../assets/js/scripts.js"></script>
      
         <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
+            <script src="../assets/js/placeholder.js"></script>
         <![endif]-->
 
        <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/linkedin.ico">
+        <link rel="shortcut icon" href="../assets/ico/linkedin.ico">
         
     </head>
 
@@ -69,19 +70,19 @@
                             <div class="w3-third">
                               <div class="w3-white w3-text-grey w3-card-4 rounded-border">
                                 <div class="w3-display-container">
-                                  <img src="assets/img/backgrounds/CollageThing_light.jpg" style="width:100%" alt="Avatar">
+                                  <img id="profilePic" style="width:100%" alt="Avatar">
                                 </div>
                                   
                                 <div class="w3-container">
-                                  <p class="info-position"><i class="fa fa-user-md fa-fw w3-margin-right w3-large icon-color"></i>Zhihao Zhang</p>
-                                  <p class="info-position"><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-large icon-color"></i>06-03-1994</p>
-                                  <p class="info-position"><i class="fa fa-envelope fa-fw w3-margin-right w3-large icon-color"></i>zzyrd@mail.missouri.edu</p>
-                                  <p class="info-position"><i class="fa fa-phone fa-fw w3-margin-right w3-large icon-color"></i>573-818-5526</p>
-                                  <p class="info-position"><i class="fa fa-calendar fa-fw w3-margin-right w3-large icon-color"></i>Joined: 01-01-2017</p> 
+                                  <p class="info-position" id="profileName"></p>
+                                  <p class="info-position" id="profileBirthday"></p>
+                                  <p class="info-position" id="profileEmail"></p>
+                                 <!--  <p class="info-position"><i class="fa fa-phone fa-fw w3-margin-right w3-large icon-color"></i>573-818-5526</p> -->
+                                  <p class="info-position" id="joinedDate"></p> 
                                 </div>
                                   
                                 <div class="w3-display-container">
-                                  <button class="btn btn-style rounded-border" type="submit">add as friends</button>
+                                  <button id="add_this_user" class="btn btn-style rounded-border" type="submit">Add as Friend</button>
                                 </div>
                                   
                               </div>   
@@ -90,44 +91,44 @@
                             <!-- Right Column -->
                             <div class="w3-twothird">   
                                <div class="w3-container w3-card-4 w3-white w3-margin-bottom rounded-border">
-                                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-folder fa-fw w3-margin-right w3-xxlarge icon-color"></i>Photo Repositories</h2>
+                                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-folder fa-fw w3-margin-right w3-xxlarge icon-color"></i>My Repositories</h2>
 
                                     <div class="w3-container">
                                         <div class="ui three column grid">
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="https://firebasestorage.googleapis.com/v0/b/capstone2017-4504b.appspot.com/o/images%2F-Kh2ks3VncfldpwyqyFk.jpg?alt=media&token=da0bf9ef-72cf-4176-b4b0-169c3c789f0c">
                                                </a>
                                             </div>
-                                              <h4 class="repo-title-position">Title</h4>
+                                              <h4 class="repo-title-position">Muñoz Family</h4>
                                           </div>
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="https://bwd1919.files.wordpress.com/2010/05/brentwood-rec-center-constructionaerial-photo-539.jpg">
                                                </a>
                                             </div>
-                                              <h4 class="repo-title-position">Title</h4>
+                                              <h4 class="repo-title-position">Brentwood, MO</h4>
                                           </div>
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="http://i.imgur.com/1huOCnF.jpg">
                                                </a>
                                             </div>
-                                              <h4 class="repo-title-position">Title</h4>
+                                              <h4 class="repo-title-position">Forsythe Family</h4>
                                           </div>
                                         </div>
                                     </div>
                                     <hr class="hr-style">
                                   
-                                    <div class="w3-container">
+                                    <!-- <div class="w3-container">
                                         <div class="ui three column grid">
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="/Users/Yidong/Documents/CS4980/testing_pic/file000693070568.jpg">
                                                </a>
                                             </div>
                                               <h4 class="repo-title-position">Title</h4>
@@ -135,7 +136,7 @@
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="/Users/Yidong/Documents/CS4980/testing_pic/file000132701536.jpg">
                                                </a>
                                             </div>
                                               <h4 class="repo-title-position">Title</h4>
@@ -143,14 +144,14 @@
                                           <div class="column">
                                             <div class="ui segment">
                                                <a class="ui medium  rounded image" href="#">
-                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                                    <img src="/Users/Yidong/Documents/CS4980/testing_pic/file4821300966298.jpg">
                                                </a>
                                             </div>
                                               <h4 class="repo-title-position">Title</h4>
                                           </div>
                                         </div>
                                     </div>
-                                    <hr class="hr-style"> 
+                                    <hr class="hr-style">  -->
                                   
                                </div>
                             </div>
@@ -162,6 +163,8 @@
               </div>
           </div>      
         </div>
+
+    <script src = "profile_others_info.js"></script>
     </body>
 
 </html>
