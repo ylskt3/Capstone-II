@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
 	              , "assets/img/backgrounds/6.jpeg"
 	             ], {duration: 3000, fade: 750});
      */
-     $.backstretch("assets/img/backgrounds/CollageThing_light.jpg");
+     $.backstretch("assets/img/backgrounds/clean_textile_@2X.png");
      /*
         Wow
     */
@@ -21,6 +21,20 @@ jQuery(document).ready(function() {
     
       /* menu tooltip */
     $('[data-toggle="tooltip"]').tooltip();
+  
+  
+  
+        
+        
+       
+    
+    
+    /* Wechat toggle function */
+
+ //       $("#QRcode").hide();
+//        $("#user").click(function(){
+//        $("#QRcode").slideToggle("slow");
+//      });
 
      /*
 	    Modals

@@ -1,0 +1,41 @@
+/* Navigation bar CSS */
+.navbar-customized-color {
+         background-color: #0d69af;
+}
+.hover_effect:hover, .hover_effect:focus {
+         color: #2d0202;
+         /*cannot change the following background color since it will use the color setting in Bootstrap.css*/
+         background-color: #6db3ef;
+}
+.search-bar-area {
+          width: 70%;
+          margin-left: 30px;
+}
+
+                            
+.form-control {
+          height: 40px;
+          margin-top: 5px;
+          padding: 10px 10px 10px 10px;
+          border-radius: 15px;   
+}
+  
+        
+.btn-search{
+          height: 40px;
+          margin-top: 5px;
+          color: #fff;
+          background-color: #0d69af;
+          border: 1px solid #ccc;
+          border-radius: 15px;
+          z-index: 3;
+}
+.btn-search:hover,  .btn-search:focus{
+          border-radius: 15px;
+          background-color: #fff;
+          color: black;      
+}
+
+.dropdown-menu>li>a:hover {
+           background-color: #ccc;
+}
