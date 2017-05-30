@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Main page</title>
+     
+        <!-- CSS -->
+ <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">     
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="../assets/css/animate.css">
+        <link rel="stylesheet" type="text/css" href="../assets/semantic/semantic.css">
+        <link rel="stylesheet" href="../assets/css/timeline_page.css">
+        <link rel="stylesheet" href="../assets/css/nav_bar.css">
+        <!-- Javascript -->
+        <script src="../assets/js/jquery-1.12.3.min.js"></script>
+        <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.backstretch.min.js"></script>
+        <script src="../assets/semantic/semantic.js"></script>
+        <script src="../assets/js/scripts.js"></script>
+        <script src="../assets/js/wow.min.js"></script>jquery-ui.css
+        <link rel="stylesheet" href="../assets/css/jquery-ui.css">
+        <!-- datepicker style    -->
+        <script src="bootstrap-datepicker.js"></script>
+        <script src="material-kit.js"></script>
+        <link rel="stylesheet" href="material-kit.css">
+        <!-- jquery UI -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="require.js"></script>
+        <!--[if lt IE 10]>
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+        
+        <!-- customized timeline viewer CSS-->
+        <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+        <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/fonts/font.clicker-garamond.css">
+        <!-- customized timeline viewer Javascript -->
+        <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+        <link rel="stylesheet" href="../assets/css/style.css">
+
+        <style>
+        
+            .div_margin_top {
+                margin-top: 63px;
+            }
+            a{
+                color:#ffffff;
+            }      
+            .timeline_size {
+                width: 100%;
+                height: 600px;
+            }
+            hr {
+                border-top: 2px dashed #eee;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <!-- menu bar -->
+           <!-- menu bar -->
+            <nav class="navbar navbar-fixed-top navbar-customized-color">
+              <div class="container">             
+                    <div id="navbar" class="navbar-collapse collapse">
+                      <ul class="nav navbar-nav">
+                        <li><a id="home" class="hover_effect" href="../homeFeed/homeFeed.html" data-toggle="tooltip" data-placement="bottom" title="Home">Home</a></li>
+                        <li><a id="Repository" class="hover_effect" href="../main/repoView.html" data-toggle="tooltip" data-placement="bottom" title="Repository">Repository</a></li>
+                        <li><a id="People" class="hover_effect" href="../main/people_view.html" data-toggle="tooltip" data-placement="bottom" title="People" >People</a></li> 
+                      </ul>
+                      <ul class="nav navbar-nav search-bar-area">
+                          <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search" name="q">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-search"  type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                      </ul>    
+                      <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                          <a href="#" id="user" class="hover_effect dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o fa-1x fa-fw" aria-hidden="true"></i></a >
+                          <ul class="dropdown-menu">
+                            <li><a href="../profile/profile_self.html"><span class="info-position w3-margin-right w3-large icon-color glyphicon glyphicon-user" aria-hidden="true"></span>Edit Profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#"><span class="info-position w3-margin-right w3-large icon-color glyphicon glyphicon-log-out" aria-hidden="true"></span>Sign out</a ></li>
+                          </ul>
+                        </li>     
+                      </ul>
+                    </div><!--/.nav-collapse --> 
+              </div>
+            </nav>
+     
+        <div class="div_margin_top">
+        
+<!--         <p><strong>Design for repository here! still trying to find out a way for showing repository with the good UI design including certain funcationalites</strong></p> -->
+        </div>
+
+        <hr>
+        
+<!--
+        <p>simplest way</p>
+         simplest way 
+        <div>     
+        <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1IgkgzK1KCoFYLd0hutJwzAUaRd7Xvss1mMjdlq1Lzs0&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
+        </div>
+-->
+        
+        <div><!-- <p>customized timeline view</p> -->    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+      Upload Photos</button></div>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+                <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <progress value="0" max="100" id="uploader">0%</progress>
+            <input type="file" accept="image/*" value="upload" id = "fileButton">
+            <output id="filesInfo"></output>
+            <canvas id="canvas" width=300></canvas>
+            <p>description</p>
+            <input type="text" id="start_date"class="datepicker form-control"  name="appDeadline" placeholder="month / day / year"required><br>
+            Title:<input type="input" id="title"><br>
+            <input type="textArea" id="description">
+
+            <p></p>
+            
+          </div>
+          <div class="modal-footer">
+            <input type="button" id = "submit" value = "Submit" class="btn btn-default">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">submit</button> -->
+          </div>
+        </div>
+        </div>
+        </div>
+        <!-- could do some customization -->
+        <div class="padding_top timeline_size" id='timeline-embed'></div>
+        <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyD6ZC7v1hVtN1_gNo5M-MbUoXGv6sZXrJE",
+            authDomain: "capstone2017-4504b.firebaseapp.com",
+            databaseURL: "https://capstone2017-4504b.firebaseio.com",
+            storageBucket: "capstone2017-4504b.appspot.com",
+            messagingSenderId: "739463464766"
+          };
+          firebase.initializeApp(config);
+        </script>
+
+        <script type="text/javascript">
+      // The TL.Timeline constructor takes at least two arguments:
+      // the id of the Timeline container (no '#'), and
+      // the URL to your JSON data file or Google spreadsheet.
+      // the id must refer to an element "above" this code,
+      // and the element must have CSS styling to give it width and height
+      // optionally, a third argument with configuration options can be passed.
+      // See below for more about options. timenav_position
+        // var timeline_json;
+        // $.getJSON("http://localhost:8888/ericsong.com/test2.json", function(json) {
+        //     console.log(json); // this will show the info it in firebug console
+        //     //console.log(json.events);
+        //     timeline_json = json;
+        //     console.log(timeline_json);
+        //     timeline = new TL.Timeline('timeline-embed',timeline_json, options);
+        // });
+        //console.log(timeline_json);
+          var my_json;
+          const dbRefRepo = firebase.database().ref();
+          var repo_id;
+            dbRefRepo.once('value', snap => {
+                        // repo_id = snap.child('users').child('t0b0MJbprQdOBoXU9BiV0zmYymA2').child('repositories').val();
+                        //console.log(repo_id);
+                        var target_repo_id = sessionStorage.getItem("sent");
+                        console.log(target_repo_id);
+                        //var x = <?php echo $_POST["comentonpost"] ?>
+                        //console.log(uid);
+                        var photo_array = new Array();
+                        var match =false;
+                        var photo_id;
+                        var photo_info = new Array();
+                        var repo_info = snap.child('repositories').child(target_repo_id).val();
+                        //target_repo_id = "-Ke-fv2rM_Xklj9CJr1t";
+                        //console.log(Object.keys(repo_id).length);
+                        // for( var i = 0; i < Object.keys(repo_id).length ; i++ ){
+                        //     var checking_id = Object.keys(repo_id)[i];
+                        //     if(checking_id == target_repo_id){
+                        //         match = true;
+                        //         break;
+                        //     }
+                        // }
+                        //console.log(match);
+                        photo_id = snap.child('repositories').child(target_repo_id).child('photos').val();
+                        if(photo_id !=null){
+                        for(var i = 0; i < Object.keys(photo_id).length ; i++ ){
+                            photo_array.push(Object.keys(photo_id)[i]);
+                        }
+                        
+                        for(var i = 0; i < photo_array.length; i++ ){
+                            photo_info.push(snap.child('photographs').child(photo_array[i]).val());
+                            
+                        }
+                        console.log(photo_info);
+
+
+                var json_string = {
+                                    "title": {
+                                        "media": {
+                                          "url": repo_info.thumbnailUrl,
+                                          "caption": "Whitney Houston performing on her My Love is Your Love Tour in Hamburg.",
+                                          "credit": "flickr/<a href='http://www.flickr.com/photos/tm_10001/'>tm_10001</a>"
+                                        },
+                                        "text": {
+                                          "headline": repo_info.title,
+                                          "text": repo_info.longDescription,
+                                        }
+                                    },
+                                    "events": [
+
+                                    ]
+                                }
+                for(var i = 0 ; i < photo_array.length; i ++){
+                    if(photo_info[i] != null){
+                    var time = photo_info[i].date_taken;
+                    time =time.split('-');
+                    console.log(time);
+                    var new_event = {
+                                        "media": {
+                                          "url": photo_info[i].main_url,
+                                          "caption": photo_info[i].description,
+                                          "credit": "should be something in the DB"
+                                        },
+                                        "start_date": {
+                                          "month": time[1],
+                                          "day": time[2],
+                                          "year": time[0]
+                                        },
+                                        "text": {
+                                          "headline": photo_info[i].title,
+                                          "text": "Here's some description"
+                                        }
+                                    }
+                    var event_length = Object.keys(json_string['events']).length;
+                    json_string['events'][event_length] = new_event;  
+                }
+                }
+
+                console.log(json_string);
+                console.log(json_string['events']);
+                console.log(json_string);
+                timeline = new TL.Timeline('timeline-embed',json_string, options);
+                //console.log(my_json.events);
+                var photo_title_array = new Array();
+                for(var i = 0; i < photo_info.length; i++ ){
+                    photo_title_array.push(snap.child('photographs').child(photo_array[i]).child('title').val());
+                            
+                }
+                
+                console.log(photo_title_array);
+                function createCallback( i ){
+                    return function(){
+                //alert('you clicked' + i);
+                        $( 'div[id = dialog'+i+']' ).dialog({
+                          autoOpen: false,
+                          width:600,
+                          height:500,
+                          show: {
+                            effect: "blind",
+                            duration: 1000
+                          },
+                          hide: {
+                            effect: "explode",
+                            duration: 1000
+                          }
+                        });
+                          $( 'div[id = dialog'+i+']' ).dialog( "open" );
+                    }
+                }
+                for(i = 0; i < photo_title_array.length; i++ ){
+                    $("div[id='timeline-embed']").on("click","div[id="+photo_title_array[i]+"]" ,createCallback(i));
+
+                }
+                var audi_src = new Array();
+                var cur_src;
+                var src_array = new Array();
+                var temp_obj;
+                for(var i = 0 ; i < photo_array.length; i ++){
+                    for(var j = 0; j < photo_title_array.length; j++ ){
+
+                        if(photo_title_array[i] == photo_info[i].title){
+                            cur_src = photo_info[i].uid;
+                            console.log(cur_src);
+                        }
+                        break;
+                    }
+                    
+                    src_array.push(snap.child('photographs').child(cur_src).child('stories').val());
+                    console.log(src_array);
+
+                    //audi_src.push(snap.child('stories').child(photo_array[i]).child('recording_url').val());
+                }
+                console.log(src_array);
+                console.log(src_array[1]);
+
+                if(src_array != null){
+                    for(var i = 0; i < src_array.length ; i++ ){
+                            audi_src[i] = new Array();
+                            temp_obj = src_array[i]; 
+                            //console.log(Object.keys(temp_obj));
+                            if(src_array[i] != null){
+                                for(var j = 0; j < Object.keys(src_array[i]).length; j ++){
+                                
+                                    audi_src[i].push(snap.child('stories').child(Object.keys(temp_obj)[j]).child('recording_url').val());
+                                }
+                            }
+                        }
+                }
+
+                console.log(audi_src.length);
+
+                for(var i = 0 ; i < audi_src.length; i ++){
+                    var string = '<div id="dialog'+i+'" classtitle="Basic dialog"><p>this is '+i+'</p><div>';
+                    $("body").append(string);
+                    for(var j = 0; j < audi_src[i].length; j ++){
+                    var audi_obj = '<div class="ui"><div class="ui items"><div class="item show_container"><div class="content"><div class="description"><audio controls><source src = "'+audi_src[i][j]+'", type = "audio/mpeg"></audio></div></div><div class="content"><div class="description"><button type ="button" class="deleteStory btn btn-style rounded-border" id="'+photo_info[i].uid+'|'+Object.keys(src_array[i])[j]+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></div></div></div></div>';
+                        $('div[id="dialog'+i+'"]').append(audi_obj);
+                    }   
+
+
+                var button = "<div class='container'><div class='row'><div class='col-lg-2'><button type='button' id ='"+photo_info[i].uid+"' class= 'uploadStory btn btn-primary'>Add Story</button></div><div class='col-lg-6'><button type='button' id ='"+photo_info[i].uid+"' class= 'DeletePhoto btn btn-primary'>Delete Photo</button></div></div></div>";
+                    $('div[id="dialog'+i+'"]').append(button);
+                    $( 'div[id = dialog'+i+']' ).dialog({
+                          autoOpen: false,
+                        });
+                         
+                    }
+                
+}
+                //$("body").append(string);
+
+            });
+
+            $("body").on("click", ".uploadStory",function(){
+                //alert("asdfsadf");
+                var repo_id = $(this).attr("id");
+                alert(repo_id);
+                sessionStorage.setItem("uploadStory", repo_id); 
+                window.location.replace("../main/uploadStories.html");
+
+            });
+            
+
+            $("body").on("click", ".deleteStory",function(){
+                //alert("asdfsadf");
+                combined_string = $(this).attr("id");
+                alert(combined_string);
+                var value = combined_string.split("|");
+                    var currentStory = value[1]; //sessionStorage.getItem("current_story");
+                    var currentPhoto = value[0];//sessionStorage.getItem("current_photo");
+                    alert(value[0]);
+                    alert(value[1]);
+
+                const photoRef = firebase.database().ref('photographs');
+                const storyRef = firebase.database().ref('stories');
+
+                storyRef.child(currentStory).remove();
+                photoRef.child(currentPhoto).child('stories').child(currentStory).remove();
+                $(this).parent().parent().parent().hide();
+                location.reload();
+
+            });
+            $("body").on("click", ".DeletePhoto",function(){
+                //alert("asdfsadf");
+            var currentRepo = sessionStorage.getItem("sent");
+                alert("clicked");
+
+                var id = $(this).attr("id");
+                alert(id);
+                var currentPhoto = id;//sessionStorage.getItem("current_photo");
+
+                const userRef = firebase.database().ref('users'); 
+                const photoRef = firebase.database().ref('photographs');
+                const storyRef = firebase.database().ref('stories');
+                const repoRef = firebase.database().ref('repositories');
+
+
+                storyRef.on('child_removed', snap => {
+                    //when a photo is removed, remove the img on html
+                    console.log(snap.key);
+
+                    //if(photoRef.child(currentPhoto).child('stories').hasChild(snap.key)){
+                    photoRef.child(currentPhoto).child('stories').child(snap.key).remove();
+                    //}
+                })
+                
+
+                var currentPhotoRef = firebase.database().ref('photographs').child(currentPhoto);
+
+                    currentPhotoRef.child('stories').once('value', function(snapshot){
+                    if(snapshot.val() != null){
+                        console.log(Object.keys(snapshot.val()));
+                        console.log(Object.keys(snapshot.val()).length);
+
+                        var x;
+                        for(x = 0; x < (Object.keys(snapshot.val()).length); x++){
+                            console.log(Object.keys(snapshot.val())[x]);
+                            storyRef.child(Object.keys(snapshot.val())[x]).remove();
+                        }
+                    }
+
+                }).then(function(){
+                    repoRef.child(currentRepo).child('photos').child(currentPhoto).remove();
+                    photoRef.child(currentPhoto).remove();
+                });
+
+
+            });
+            // console.log(photo_title_array[0]);
+
+            // $("div[id='timeline-embed']").on("click", "div[id="+photo_title_array[i]+"]",function(){
+            //     alert("wtf");
+
+            // });
+
+            var options = {
+                    timenav_position: "top"
+            }
+            
+
+
+        </script>
+        <hr>
+    <script >
+        (function() {
+
+
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+
+      var currentRepo = sessionStorage.getItem("sent");
+
+      if(firebaseUser && currentRepo != null){
+        console.log(firebaseUser);
+        // var btn = document.createElement("BUTTON");
+        // btn.innerText = "logout";
+        // document.body.appendChild(btn).id = 'btnLogout';
+        console.log(currentRepo);
+
+
+        //const btnLogout = document.getElementById('btnLogout');
+        const dbRefObject = firebase.database().ref('users');
+        const dbRefPhoto = firebase.database().ref('photographs');
+        const preObject = document.getElementById('object');
+        const imageList = document.getElementById('imageList');
+        var uploader = document.getElementById('uploader');
+        var fileButton = document.getElementById('fileButton');
+        var repoKeyRef = dbRefObject.child(firebase.auth().currentUser.uid).child('repositories').child(currentRepo);
+        var dataURL;
+
+
+        //  Check to see if there is a user
+        if (firebase.auth().currentUser == null) {
+            console.log("There is no user signed in");
+        }
+        else {
+            console.log("There is a user!");
+        }
+
+        // btnLogout.addEventListener('click', e => {
+        //  firebase.auth().signOut();
+        //  window.location = '../auth/auth.html';
+        // });
+
+        //listen for file selection
+
+        var inputFile = document.getElementById("fileButton");
+        var submitBtn = document.getElementById("submit");
+        var descriptionTxt = document.getElementById("description");
+        
+
+        fileButton.addEventListener('change', function(e){
+
+            var file = e.target.files[0];
+
+            var result = '';
+
+            reader = new FileReader();
+            reader.onload = (function (tFile) {
+                return function (evt) {
+                    // var div = document.createElement('div');
+                    // div.innerHTML = '<img style="width: 90px;" src="' + evt.target.result + '" />';
+                    // //console.log(evt.target.result);
+                    // document.getElementById('filesInfo').appendChild(div);
+
+                    var canvas = document.getElementById("canvas");
+                    var ctx = canvas.getContext("2d");
+
+                    img = new Image();
+                    img.onload = function () {
+
+                        canvas.height = canvas.width * (img.height / img.width);
+
+                        /// step 1
+                        var oc = document.createElement('canvas'),
+                            octx = oc.getContext('2d');
+
+                        oc.width = img.width * 0.5;
+                        oc.height = img.height * 0.5;
+                        octx.drawImage(img, 0, 0, oc.width, oc.height);
+
+                        /// step 2
+                        octx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5);
+
+                        ctx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5,
+                        0, 0, canvas.width, canvas.height);
+                    }
+                    img.src = evt.target.result;
+
+                    //console.log(canvas[0].toDataURL());
+                    dataURL = img.src;
+                    //console.log(img.src);
+
+                    // var thumbnailRef = firebase.storage().ref().child('thumbnails').child(firebase.auth().currentUser.uid).child(file.name);
+
+                    // thumbnailRef.putString(img.src).then(function(snapshot) {
+                    //  console.log('Uploaded a base64 string!');
+                    // });
+                };
+            }(file));
+            reader.readAsDataURL(file);
+
+        });
+
+        submitBtn.addEventListener('click', function(){
+
+            //get current date
+            var titleTxt = document.getElementById("title").value;
+            var start_date = document.getElementById("start_date").value;
+            var today = new Date();
+
+            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+ ' ' +today.getHours() + ':' + today.getMinutes() + ":" + today.getSeconds();
+
+            var file = inputFile.files[0];
+
+            var newPostRef = firebase.database().ref().child('photographs').push();
+            var photoKey = newPostRef.key;
+            console.log(photoKey);
+            // console.log(start_date);
+            new_time =start_date.split('/');
+            // console.log(new_time);
+            var temp1 = new_time[0];
+            var temp2 = new_time[1];
+            new_time[0] = new_time[2];
+            new_time[1] = temp1;
+            new_time[2] = temp2;
+            new_time = new_time.join("-");
+            // console.log(new_time);
+            //create a storage ref
+            var rand_string = generateRandomFileSafeString(6);
+            var extension = pullFileNameExtension(file.name);
+
+            if(extension != "unknown"){
+                var newFileName = photoKey + '+' + rand_string + '.' + extension;
+                console.log(newFileName);
+                var storageRef = firebase.storage().ref('images').child(firebase.auth().currentUser.uid).child(newFileName);
+                //upload file
+                var task = storageRef.put(file);
+
+
+                //update progress bar
+                task.on('state_changed',
+                    function progress(snap){
+                      var percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+                      uploader.value = percentage;
+                    },
+
+                    function error(err){
+                        firebase.database().ref().child('photographs').child(photoKey).remvoe();
+                    },
+                    //When the upload is complete, set database
+                    function complete(){
+
+                        var mainDownloadURL = task.snapshot.metadata.downloadURLs[0];
+
+                        console.log( mainDownloadURL );
+
+
+                        newPostRef.set({
+                            date_taken: new_time,
+                            date_taken_conf: "0.7",
+                            uploader_id: firebase.auth().currentUser.uid,
+                            date_uploaded: date,
+                            location_city: "Any City",
+                            location_conf: 0,
+                            location_coord_lattitude: 0,
+                            location_coord_longitude: 0,
+                            location_country: "Any Country",
+                            location_state: "Any State",
+                            main_url: mainDownloadURL,
+                            thumbnailPath: "images/no-picture-yet.jpg",
+                            description: descriptionTxt,
+                            title: titleTxt,
+                            uid: photoKey
+                        });
+
+                        var currRepoRef = firebase.database().ref().child('repositories').child(currentRepo);
+                        var repoKey = currRepoRef.key;
+
+                        currRepoRef.child('photos').child(photoKey).set("true");
+
+                        //TODO: create thumbnail
+
+                        // var thumbnailFileName = "thumb+" + task.snapshot.metadata.name;
+                        // console.log(thumbnailFileName);
+
+
+                        // setTimeout(function(){
+                        //     //create thumbnail image ref
+                        //  firebase.storage().ref().child('images').child(firebase.auth().currentUser.uid).child(thumbnailFileName).getDownloadURL().then(function(thumbnailUrl) {
+                        //      console.log(thumbnailUrl);
+                        //  });
+                        // }, 10000);
+                            location.reload();
+                    }
+                );
+            }
+
+
+
+        });
+
+
+
+        const dbRefRepo = firebase.database().ref('repositories').child(currentRepo).child('photos');
+
+ 
+
+      }
+      else
+      {
+        console.log("not logged in");
+        //window.location = '../auth/auth.html';
+      }
+
+    });
+
+
+
+}());
+
+function generateRandomFileSafeString(str_length) {
+
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < str_length; i++ ){
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
+}
+
+function pullFileNameExtension( file_name ) {
+
+    var default_value = "unknown";
+
+    var split_strings = file_name.split(".");
+
+    if (split_strings.length != 2){
+        //  There was some error
+        return default_value;
+    }
+
+    return split_strings[1];
+}
+
+
+    </script>
+    </body>
+
+</html>

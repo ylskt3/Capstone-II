@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Profile</title>
+        <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+        <!-- CSS -->
+<!--        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+        <link rel="stylesheet" href="../assets/css/w3.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/animate.css">
+        <link rel="stylesheet" type="text/css" href="../assets/semantic/semantic.css">
+        <link rel="stylesheet" href="../assets/css/profile_customized.css">
+        <link rel="stylesheet" href="../assets/css/nav_bar.css">
+
+        <!-- Javascript -->
+
+        <script src="../assets/js/jquery-1.12.3.min.js"></script>
+        <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.backstretch.min.js"></script>
+        <script src="../assets/semantic/semantic.js"></script>
+        <script src="../assets/js/wow.min.js"></script>
+        <script src="../assets/js/scripts.js"></script>
+
+        <!--[if lt IE 10]>
+            <script src="../assets/js/placeholder.js"></script>
+        <![endif]-->
+
+       <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="../assets/ico/album.png">
+
+    <body>
+        <!-- menu bar -->
+            <nav class="navbar navbar-fixed-top navbar-customized-color">
+              <div class="container">
+
+                    <div id="navbar" class="navbar-collapse collapse">
+                      <ul class="nav navbar-nav">
+                        <li><a id="home" class="hover_effect" href="../homeFeed/homeFeed.html" data-toggle="tooltip" data-placement="bottom" title="Home">Home</a></li>
+                        <li><a id="Repository" class="hover_effect" href="../main/repoView.html" data-toggle="tooltip" data-placement="bottom" title="Repository">Repository</a></li>
+                        <li><a id="People" class="hover_effect" href="../main/people_view.html" data-toggle="tooltip" data-placement="bottom" title="People" >People</a></li>
+
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a id="search" class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="Search"><i class="fa fa-search fa-1x fa-fw" aria-hidden="true"></i></a></li>
+                        <li>
+                          <a id="user" class="hover_effect"  data-toggle="tooltip" data-placement="bottom" title="User"  data-toggle="modal" data-target="#myModal" >
+                          <!-- <button type="button" data-toggle="modal" data-target="#myModal"> -->
+                          <i class="fa fa-user-circle-o fa-1x fa-fw" aria-hidden="true"></i>
+                        <!-- </button> -->
+                        </a>
+                      </li>
+                      </ul>
+                    </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+
+
+        <div class="div_margin_top container ">
+           <div class="ui stackable one column divided grid container">
+              <div class="row">
+
+                  <div id="column1" class="column">
+                      <!-- The Grid -->
+                      <div class="w3-row-padding">
+                            <!-- Left Column -->
+                            <div class="w3-third">
+                              <div class="w3-white w3-text-grey w3-card-4 rounded-border">
+                                <div class="w3-container">
+                                  <img id="profilePic" style="width:100%" alt="Avatar">
+                                </div>
+
+                                <div class="w3-container">
+                                  <!-- <p class="info-position" id="profileName" ></p>
+                                  <p class="info-position" id="profileBirthday"></p>
+                                  <p class="info-position" id="profileEmail"></p>
+                                  <p class="info-position" id="joinedDate"></p> -->
+                                </div>
+                                <hr class="hr-style">
+
+                                <div class="w3-display-container">
+                                  <button class="btn btn-style rounded-border" type="button" data-toggle="modal" data-target="#modal-update">Edit profile</button>
+                                </div>
+                                <hr class="hr-style">
+
+                              </div>
+                            </div>
+                            <div class="w3-twothird">
+
+                               <div class="w3-container w3-card-4 w3-white w3-margin-bottom rounded-border">
+                                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-folder fa-fw w3-margin-right w3-xxlarge icon-color"></i>My Profile</h2>
+
+                                    <!-- <div class="w3-display-container">
+                                      <img id="profilePic" style="width:100%" alt="Avatar">
+                                    </div> -->
+
+                                    <div class="w3-container">
+
+                                    </div>
+
+                                    <hr class="hr-style">
+
+                                    <div class="w3-container">
+                                        <div class="ui three column grid">
+
+                                          <!-- <p class="info-position" id="profileName" ></p>
+                                          <p class="info-position" id="profileBirthday"></p>
+                                          <p class="info-position" id="profileEmail"></p>
+                                          <p class="info-position" id="joinedDate"></p> -->
+                                        </div>
+                                    </div>
+
+
+                                    <div class="w3-container">
+
+
+                                          <p class="info-position" id="profileName" ></p>
+                                          <p class="info-position" id="profileBirthday"></p>
+                                          <p class="info-position" id="profileEmail"></p>
+                                          <p class="info-position" id="joinedDate"></p>
+
+                                    </div>
+                                    <!-- <div class="w3-display-container">
+                                      <button class="btn btn-style rounded-border" type="submit" id="edit_profile">Edit profile</button>
+                                    </div> -->
+                                    <hr class="hr-style">
+
+                               </div>
+                            </div>
+
+                            <!-- End Right Column -->
+                      </div>
+                      <!-- End Grid -->
+                   </div>
+
+              </div>
+          </div>
+        </div>
+        <!-- Modal content-->
+        <div class="modal fade" id="modal-update" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h3 class="modal-title" id="modal-register-label">Update your profile</h3>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- here is the form for updating profile. Grab input data here -->
+                        <form role="form" action="#" method="post" class="registration-form">
+                            <div class="row">
+                              <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form-first-name">First</label>
+                                        <input type="text" placeholder="First name" id="first_name"class="form-control" id="form-first-name">
+                                    </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                        <label for="form-last-name">Last</label>
+                                        <input type="text"  placeholder="Last name" id="last_name" class="form-control" id="form-last-name">
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                     <div class="form-group">
+                                        <label for="form-dateofbirth">Date of birth</label>
+                                        <input type="date" class="form-control" id="form-dateofbirth">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <!-- <div class="form-group">
+                                            <label for="form-phone">Phone #:</label>
+                                            <input type="number" class="form-control" id="form-phone">
+                                        </div> -->
+                                </div>
+                            </div>
+                            <button type="submit" id="update_info"class="btn btn-style rounded-border">Update</button>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src = "profile_info.js"></script>
+</html>

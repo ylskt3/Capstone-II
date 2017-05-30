@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>WELCOME BACK!!</title>
+        <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+        <link rel="stylesheet" media="screen" href="../css/style.css">
+        <!-- CSS -->
+
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../assets/css/form-elements.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/animate.css">
+
+        <!-- Javascript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.backstretch.min.js"></script>
+        <script src="../assets/js/scripts.js"></script>
+        <script src="../assets/js/wow.min.js"></script>
+
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <!-- website logo here -->
+        <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+        <link rel="shortcut icon" href="../assets/ico/album.png">
+    </head>
+
+    <body  style="background-image: url('https://firebasestorage.googleapis.com/v0/b/test-1216f.appspot.com/o/CollageThing.png?alt=media&token=35e53c37-1b7b-4f2f-8bc2-94e9a3c213df');">
+        <!-- Top content -->
+        <div class="top-content">
+
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text wow slideInLeft">
+                            <h1><strong>PhotoArchiving
+                            Application</strong></h1>
+                            <!-- You guys could add some descriptions here -->
+                            <div class="description">
+                            	<h3 style="color: white;">
+	                            	Welcome Back!
+                            	</h3>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box wow slideInRight">
+                        	<div class="form-top" style="
+    padding-bottom: 0px;background:rgba(51, 51, 51, 0.77)
+">
+                        		<!-- <div class="form-top-left">
+                        			<h3>Hello! Please login. (Edit here)</h3>
+                            		<p>Enter your username and password: (Edit here)</p>
+                        		</div> -->
+                        		<!-- <div class="form-top-right">
+                        			<i class="fa fa-sign-in"></i>
+                        		</div> -->
+                            </div>
+                            <div class="form-bottom" style="
+      padding-bottom: 0px;background:rgba(51, 51, 51, 0.77)
+  ">
+
+
+                                <!-- here is the form for login submission. Grab input data from here-->
+
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="form-username">Username</label>
+			                        	<input type="text" id = "txtEmail" type="email"name="user" placeholder="Username..." class="form-username form-control" id="txtEmail">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-password">Password</label>
+			                        	<input id = "txtPassword" type="password" name="pass" placeholder="Password..." class="form-password form-control" id="txtPassword">
+			                        </div>
+			                      <button id = "btnLogin" type="submit" name = "submit" class="btn">Sign in</button>
+                                    <!--   <button id = "btnLogout" type="submit" name = "submit" class="btn">Logout</button> -->
+
+
+		                    </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 social-login wow flip">
+                        	<h3>Don’t have an account? </h3>
+                        	<div class="social-login-buttons">
+	                        	<a class="btn btn-link-2 launch-modal" href="#" data-modal-id="modal-register">
+	                        		<i class="fa fa-registered"></i> Register
+	                        	</a>
+
+                        	</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!-- MODAL Pop up registration form-->
+        <div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+        	<div class="modal-dialog">
+        		<div class="modal-content">
+
+        			<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">
+        					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        				</button>
+        				<h3 class="modal-title" id="modal-register-label">Sign up now</h3>
+        				<p>Fill in the form below to register your account:</p>
+        			</div>
+
+        			<div class="modal-body">
+
+        				<!-- here is the form for registration. Grab input data here -->
+	                    <!-- <form role="form" action="register.php" method="post" class="registration-form"> -->
+                        <div class="row">
+
+                        <div class="form-group">
+	                        	<label class="sr-only" for="form-user-name">User name</label>
+	                        	<input id = "regEmail" type="text" name="reg_user" placeholder="E-mail..." class="form-user-name form-control" id="regEmail">
+	                      </div>
+                        <div class="form-group">
+			                        	<label class="sr-only" for="register-password">Password</label>
+			                        	<input id = "regPassword"type="password" name="reg_pass" placeholder="Password..." class="form-password form-control" id="regPass">
+			                  </div>
+
+
+	                        <button type="submit" class="btn" id="btnSigUp">Sign up</button>
+	                    <!-- </form> -->
+
+
+        			</div>
+
+        		</div>
+        	</div>
+        </div>
+
+        <!-- <script src ="auth.js"></script>
+
+        <script src="../js/app.js"></script> -->
+        <script src = "auth.js"></script>
+
+	<script src="../js/particles.js"></script>
+<script src="../js/app.js"></script>
+
+    </body>
+
+</html>

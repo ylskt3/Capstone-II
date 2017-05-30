@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Profile</title>
+
+        <!-- CSS -->
+<!--        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+      <link rel="stylesheet" href="../assets/css/w3.css">
+      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+      <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="../assets/css/style.css">
+      <link rel="stylesheet" href="../assets/css/animate.css">
+      <link rel="stylesheet" type="text/css" href="../assets/semantic/semantic.css">
+      <link rel="stylesheet" href="../assets/css/profile_customized.css">
+      <link rel="stylesheet" href="../assets/css/nav_bar.css">
+
+      <!-- Javascript -->
+
+      <script src="../assets/js/jquery-1.12.3.min.js"></script>
+      <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+      <script src="../assets/js/jquery.backstretch.min.js"></script>
+      <script src="../assets/semantic/semantic.js"></script>
+      <script src="../assets/js/wow.min.js"></script>
+      <script src="../assets/js/scripts.js"></script>
+
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+       <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/linkedin.ico">
+
+    </head>
+
+    <body>
+        <!-- menu bar -->
+            <nav class="navbar navbar-fixed-top navbar-customized-color">
+              <div class="container">
+                    <div id="navbar" class="navbar-collapse collapse">
+                      <ul class="nav navbar-nav">
+                        <li><a id="home" class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="Home">Home</a></li>
+                        <li><a id="Repository" class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="Repository">Repository</a></li>
+                        <li><a id="People" class="hover_effect" href="#" data-toggle="tooltip" data-placement="bottom" title="People" >People</a></li>
+                      </ul>
+                      <ul class="nav navbar-nav search-bar-area">
+                          <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search" name="q">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-search"  type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                          <a href="#" id="user" class="hover_effect dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o fa-1x fa-fw" aria-hidden="true"></i></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#"><span class="info-position w3-margin-right w3-large icon-color glyphicon glyphicon-user" aria-hidden="true"></span>Zhihao Zhnag</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#"><span class="info-position w3-margin-right w3-large icon-color glyphicon glyphicon-log-out" aria-hidden="true"></span>Sign out</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+
+
+        <div class="div_margin_top container ">
+
+           <div class="ui stackable one column divided grid container">
+              <div class="row">
+
+                  <div id="column1" class="column">
+                      <!-- The Grid -->
+                      <div class="w3-row-padding">
+                            <!-- Left Column -->
+                            <div class="w3-third">
+                              <div class="w3-white w3-text-grey w3-card-4 rounded-border">
+                                <div class="w3-display-container">
+                                  <img src="assets/img/backgrounds/CollageThing_light.jpg" style="width:100%" alt="Avatar">
+                                </div>
+
+                                <div class="w3-container">
+                                  <p class="info-position"><i class="fa fa-user-md fa-fw w3-margin-right w3-large icon-color"></i>Zhihao Zhnag</p>
+                                  <p class="info-position"><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-large icon-color"></i>06-03-1994</p>
+                                  <p class="info-position"><i class="fa fa-envelope fa-fw w3-margin-right w3-large icon-color"></i>zzyrd@mail.missouri.edu</p>
+                                  <p class="info-position"><i class="fa fa-phone fa-fw w3-margin-right w3-large icon-color"></i>573-818-5526</p>
+                                  <p class="info-position"><i class="fa fa-calendar fa-fw w3-margin-right w3-large icon-color"></i>Joined: 01-01-2017</p>
+                                </div>
+
+                                <div class="w3-display-container">
+                                  <button class="btn btn-style rounded-border" type="button" data-toggle="modal" data-target="#modal-update">Edit profile</button>
+                                </div>
+
+                              </div>
+                            </div>
+                            <!-- End Left Column -->
+                            <!-- Right Column -->
+                            <div class="w3-twothird">
+                               <div class="w3-container w3-card-4 w3-white w3-margin-bottom rounded-border">
+                                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-folder fa-fw w3-margin-right w3-xxlarge icon-color"></i>Photo Repositories</h2>
+
+                                    <div class="w3-container">
+                                        <div class="ui three column grid">
+                                          <div class="column">
+                                            <div class="ui segment">
+                                               <a class="ui medium  rounded image" href="#">
+                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                               </a>
+                                            </div>
+                                              <h4 class="repo-title-position">Title</h4>
+                                          </div>
+                                          <div class="column">
+                                            <div class="ui segment">
+                                               <a class="ui medium  rounded image" href="#">
+                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                               </a>
+                                            </div>
+                                              <h4 class="repo-title-position">Title</h4>
+                                          </div>
+                                          <div class="column">
+                                            <div class="ui segment">
+                                               <a class="ui medium  rounded image" href="#">
+                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                               </a>
+                                            </div>
+                                              <h4 class="repo-title-position">Title</h4>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <hr class="hr-style">
+
+                                    <div class="w3-container">
+                                        <div class="ui three column grid">
+                                          <div class="column">
+                                            <div class="ui segment">
+                                               <a class="ui medium  rounded image" href="#">
+                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                               </a>
+                                            </div>
+                                              <h4 class="repo-title-position">Title</h4>
+                                          </div>
+                                          <div class="column">
+                                            <div class="ui segment">
+                                               <a class="ui medium  rounded image" href="#">
+                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                               </a>
+                                            </div>
+                                              <h4 class="repo-title-position">Title</h4>
+                                          </div>
+                                          <div class="column">
+                                            <div class="ui segment">
+                                               <a class="ui medium  rounded image" href="#">
+                                                    <img src="assets/img/backgrounds/CollageThing_light.jpg">
+                                               </a>
+                                            </div>
+                                              <h4 class="repo-title-position">Title</h4>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <hr class="hr-style">
+
+                               </div>
+                            </div>
+                            <!-- End Right Column -->
+                      </div>
+                      <!-- End Grid -->
+                   </div>
+
+              </div>
+            </div>
+            <!-- MODAL Pop up for editting profile form-->
+            <div class="modal fade" id="modal-update" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                            </button>
+                            <h3 class="modal-title" id="modal-register-label">Update your profile</h3>
+                        </div>
+                        <div class="modal-body">
+
+                            <!-- here is the form for updating profile. Grab input data here -->
+                            <form role="form" action="#" method="post" class="registration-form">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form-first-name">First</label>
+                                            <input type="text" placeholder="First name" class="form-control" id="form-first-name">
+                                        </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="form-group">
+                                            <label for="form-last-name">Last</label>
+                                            <input type="text"  placeholder="Last name" class="form-control" id="form-last-name">
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                         <div class="form-group">
+                                            <label for="form-dateofbirth">Date of birth</label>
+                                            <input type="date" class="form-control" id="form-dateofbirth">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form-phone">Phone #:</label>
+                                                <input type="number" class="form-control" id="form-phone">
+                                            </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-style rounded-border">Update</button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+</html>
